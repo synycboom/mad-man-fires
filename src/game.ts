@@ -1,8 +1,6 @@
 import 'phaser';
-import logo from './assets/phaser3-logo.png';
-import libs from './assets/libs.png';
-import bundle from './assets/plasma-bundle.glsl';
-import stars from './assets/starfields.glsl';
+import level1 from './assets/tilemaps/maps/level1.json';
+import groundTile from './assets/tilemaps/tiles/ground.png';
 
 export default class Demo extends Phaser.Scene {
   constructor() {
@@ -10,37 +8,22 @@ export default class Demo extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('logo', logo);
-    this.load.image('libs', libs);
-    this.load.glsl('bundle', bundle);
-    this.load.glsl('stars', stars);
+    this.load.image('groundTiles', groundTile);
+    this.load.tilemapTiledJSON('level1', level1);
   }
 
   create() {
-    this.add.shader('RGB Shift Field', 0, 0, 800, 600).setOrigin(0);
-
-    this.add.shader('Plasma', 0, 412, 800, 172).setOrigin(0);
-
-    this.add.image(400, 300, 'libs');
-
-    const logo = this.add.image(400, 70, 'logo');
-
-    this.tweens.add({
-      targets: logo,
-      y: 350,
-      duration: 1500,
-      ease: 'Sine.inOut',
-      yoyo: true,
-      repeat: -1
-    })
+    const map = this.make.tilemap({ key: 'level1' });
+    const tileset = map.addTilesetImage('ground', 'groundTiles');
+    const platforms = map.createLayer('ground', tileset, 0, 0);
   }
 }
 
 const config = {
   type: Phaser.AUTO,
   backgroundColor: '#125555',
-  width: 800,
-  height: 600,
+  width: 512,
+  height: 512,
   scene: Demo
 };
 

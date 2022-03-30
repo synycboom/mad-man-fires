@@ -5,6 +5,7 @@ import serve from 'rollup-plugin-serve';
 import typescript from 'rollup-plugin-typescript2';
 import url from '@rollup/plugin-url';
 import html from '@rollup/plugin-html';
+import json from '@rollup/plugin-json';
 
 export default {
   input: [
@@ -46,6 +47,7 @@ export default {
       sourceMap: true,
       ignoreGlobal: true
     }),
+    json(),
     typescript(),
     html({
       title: 'MadManFires',
