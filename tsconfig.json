@@ -6,7 +6,9 @@
     "allowSyntheticDefaultImports": true,
   },
   "include": [
-    "./src/**/*",
-    "./src/index.d.ts",
+    "src/**/*",
+    "src/index.ts",
+    "src/image.d.ts",
+    "src/window.ts",
   ]
 }

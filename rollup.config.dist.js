@@ -9,11 +9,11 @@ import json from '@rollup/plugin-json';
 
 export default {
   input: [
-    './src/game.ts'
+    './src/index.ts'
   ],
   output: {
     file: './dist/game.js',
-    name: 'MyGame',
+    name: 'MadManFires',
     format: 'iife',
     sourcemap: false,
     intro: 'var global = window;'
