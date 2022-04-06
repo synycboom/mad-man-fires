@@ -35,7 +35,8 @@ export class Level1 extends Phaser.Scene {
     this.groundTileset = this.map.addTilesetImage('ground', 'groundTiles');
     this.wallTileset = this.map.addTilesetImage('walls', 'wallTiles');
     this.marioTileset = this.map.addTilesetImage('super-mario-16bit', 'super-mario-16bit');
-    this.groundLayer = this.map.createLayer('ground', [this.groundTileset, this.wallTileset, this.marioTileset], 0, 0);
+    this.groundLayer = this.map.createLayer('ground', [this.groundTileset, this.wallTileset], 0, 0);
+    this.groundLayer = this.map.createLayer('aboveGround', [this.marioTileset], 0, 0);
     this.animatedTiles.init(this.map);
 
     this.anims.create({
